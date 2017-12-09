@@ -268,6 +268,7 @@ Devise.setup do |config|
   #
   #     mount MyEngine, at: '/my_engine'
   #
+  #config.sign_out_all_scopes = false
   # The router that invoked `devise_for`, in the example above, would be:
   # config.router_name = :my_engine
   config.omniauth :facebook, "632896913500949", "7e697d84c3619bc46c08c30cd6fefd89", callback_url: "http://localhost:3000/users/auth/facebook/callback"

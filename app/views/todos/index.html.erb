@@ -1,0 +1,39 @@
+<section id="main-content" class="animated fadeInUp">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Todo List Table</h3>
+                      <div class="actions pull-right">
+                        <i class="fa fa-expand"></i>
+                        <i class="fa fa-chevron-down"></i>
+                        <i class="fa fa-times"></i>
+                      </div>
+              </div>
+              <div class="panel-body">
+                  <table class="table">
+                        <thead>
+                          <tr>
+                          <th>Name</th>
+                          <th>Note</th>
+                          <th></th>
+                          <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% @todos.each do |todo| %>
+                            <tr>
+                            <td><%= todo.name %></td>
+                            <td><%= todo.notes %></td>
+                            <td><%= link_to 'Show', todo %></td>
+                            <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
+                            <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                            </tr>
+                            <% end %>
+                        </tbody>
+                  </table>
+                <%= link_to 'New Todo', new_todo_path, class: 'btn btn-primary' %>
+              </div>
+          </div>
+      </div>
+  </div>
