@@ -31,9 +31,10 @@
         <header id="header">
             <!--logo start-->
             <div class="brand">
-                <a href="index.html" class="logo">
+                <%= link_to root_path, class: 'logo' do %>
                     <i class="icon-layers"></i>
-                    <span>Todo</span>BOARD</a>
+                    <span>Todo</span>BOARD
+                <% end %>
             </div>
             <!--logo end-->
             <ul class="nav navbar-nav navbar-left">
@@ -44,7 +45,7 @@
                 </li>
                 <li class="toggle-profile hidden-xs">
                     <button type="button" class="btn btn-default" id="toggle-profile">
-                        <i class="icon-user"></i>
+                        <i class="fa fa-user-circle"></i>
                     </button>
                 </li>
                <li class="hidden-xs hidden-sm">
@@ -58,13 +59,19 @@
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="meta">
                             <span class="avatar">
-                                <img src="<%= asset_path('profile.jpg') %>" class="img-circle" alt="">
+                                <%= image_tag current_user.avatar.url(:thumb), class: 'img-circle' %>
                             </span>
-                        <span class="text">Yashraj Jhala</span>
+                        <span class="text"><%= current_user.name %></span>
                         <span class="caret"></span>
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight" role="menu">
+                        <li>
+                            <%= link_to edit_user_registration_path do %>
+                                <span class="icon"><i class="fa fa-user"></i>
+                                </span>Edit Profile
+                            <% end %>
+                        </li>
                         <li class="divider"></li>
                         <li>
                             <%= link_to destroy_user_session_path, method: :delete do  %>
@@ -85,13 +92,19 @@
         <aside class="sidebar sidebar-left">
             <div class="sidebar-profile">
                 <div class="avatar">
-                    <img class="img-circle profile-image" src="<%= asset_path('profile.jpg') %>" alt="profile">
+                    <%= image_tag current_user.avatar.url(:thumb), class: 'img-circle profile-image' %>
                     <i class="on border-dark animated bounceIn"></i>
                 </div>
                 <div class="profile-body dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>Yashraj Jhala <span class="caret"></span></h4></a>
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4><%= current_user.name %><span class="caret"></span></h4></a>
                     <small class="title">Front-end Developer</small>
                     <ul class="dropdown-menu animated fadeInRight" role="menu">
+                        <li>
+                            <%= link_to edit_user_registration_path do %>
+                                <span class="icon"><i class="fa fa-user"></i>
+                                </span>Edit Profile
+                            <% end %>
+                        </li>
                         <li class="divider"></li>
                         <li>
                             <%= link_to destroy_user_session_path, method: :delete do  %>
@@ -103,26 +116,28 @@
                 </div>
             </div>
             <nav>
+            <h5 class="sidebar-header">Navigation</h5>
                 <ul class="nav nav-pills nav-stacked">
-            <h5 class="sidebar-header">Account Settings</h5>
-            <div class="setting-list">
-                <div class="row">
-                    <div class="col-xs-8">
-                        <label for="check1" class="control-label">Share your status</label>
-                    </div>
-                    <div class="col-xs-4">
-                        <input type="checkbox" class="js-switch" checked id="check1" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8">
-                        <label for="check2" class="control-label">Push Notifications</label>
-                    </div>
-                    <div class="col-xs-4">
-                        <input type="checkbox" class="js-switch" id="check2" />
-                    </div>
-                </div>
-            </div>
+                  <li class="nav-dropdown">
+                        <a href="#" title="Pages">
+                            <i class="fa  fa-fw fa-file-text"></i> Pages
+                        </a>
+                        <ul class="nav-sub">
+                            <li class="active">
+                                <%= link_to "Home", todos_path %>
+                            </li>
+
+                            <li>
+                                <%= link_to "Edit Profile", edit_user_registration_path %>
+                            </li>
+
+                            <li>
+                                <%= link_to "New Todo", new_todo_path %>
+                            </li>
+                        </ul>
+                  </li>
+                </ul>
+            </nav>
         </aside>
         <!--sidebar left end-->
         <!--main content start-->
@@ -132,7 +147,7 @@
                 <div class="breadcrumb-wrapper hidden-xs">
                     <span class="label">You are here:</span>
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a>
+                        <li><%= link_to "Home", todos_path %>
                         </li>
                         <li>Pages</li>
                         <li class="active">Todo List</li>
@@ -149,7 +164,7 @@
     <!--sidebar right end-->
     <!--Config demo-->
     <div id="config" class="config hidden-xs">
-        <h4>Settings<a href="javascript:void(0)" class="config-link closed"><i class="icon-settings"></i></a></h4>
+        <h4>Settings<a href="javascript:void(0)" class="config-link closed"><i class="fa fa-spinner"></i></a></h4>
         <div class="config-swatch-wrap">
             <div class="row">
                 <div class="col-xs-6">
