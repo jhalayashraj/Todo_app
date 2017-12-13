@@ -279,5 +279,4 @@ Devise.setup do |config|
   Devise::ConfirmationsController.layout proc { |controller| "login" }
   Devise::PasswordsController.layout proc { |controller| "login" }
   Devise::SessionsController.layout proc { |controller| "login" }
-  Devise::RegistrationsController.layout proc { |controller| "signup" }
 end
