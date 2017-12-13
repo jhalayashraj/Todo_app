@@ -1,6 +1,4 @@
-<h1>Editing todo</h1>
-
-<%= render 'form' %>
+<%= render partial: 'form', locals: { title: 'Edit Todo' } %>
 
 <%= link_to 'Show', @todo, class: 'btn btn-primary' %>
 <%= link_to 'Back', todos_path, class: 'btn btn-primary' %>
