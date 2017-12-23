@@ -40,7 +40,6 @@ GEM
       tzinfo (~> 1.1)
     arel (8.0.0)
     bcrypt (3.1.11)
-    breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     climate_control (0.2.0)
     cocaine (0.5.8)
@@ -110,6 +109,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+    pg (0.21.0)
     puma (3.11.0)
     rack (2.0.3)
     rack-test (0.8.2)
@@ -180,12 +180,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  breadcrumbs_on_rails
   devise
   font-awesome-rails
   jquery-rails
   omniauth-facebook
   paperclip
+  pg
   puma (~> 3.7)
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
