@@ -16,7 +16,7 @@
                           <tr>
                           <th>Name</th>
                           <th>Note</th>
-                          <th></th>
+                          <th>Status</th>
                           <th></th>
                           </tr>
                         </thead>
@@ -25,6 +25,14 @@
                             <tr>
                             <td><%= todo.name %></td>
                             <td><%= todo.notes %></td>
+                            <td><%= link_to("/todos/#{todo.id}/toggle_status") do %>
+                                  <% if todo.status %>
+                                    <span class="fa fa-check-circle-o"></span>
+                                  <% else %>
+                                    <span class="fa fa-circle-o"></span>
+                                  <% end %>
+                                <% end %>
+                            </td>
                             <td><%= link_to 'Show', todo %></td>
                             <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
                             <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>

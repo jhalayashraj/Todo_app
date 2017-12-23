@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo, only: [:show, :edit, :update, :destroy, :toggle_status]
   before_action :authenticate_user!
 
   def index
@@ -47,6 +47,18 @@ class TodosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to todos_url notice: 'Contact was successfully destroyed.'}
       format.json { head :no_content }
+    end
+  end
+
+  def toggle_status
+    @todo.status = !@todo.status
+    respond_to do |format|
+      if @todo.save
+        format.html { redirect_to todos_path }
+        format.json { render :show, status: :ok, location: @todo }
+      else
+      # show some error message
+      end
     end
   end
 
