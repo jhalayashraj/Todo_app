@@ -43,10 +43,12 @@ class TodosController < ApplicationController
   end
 
   def destroy
+    @todo = Todo.find(params[:id])
     @todo.destroy
     respond_to do |format|
       format.html { redirect_to todos_url notice: 'Contact was successfully destroyed.'}
       format.json { head :no_content }
+      format.js   { render :layout => false }
     end
   end
 
