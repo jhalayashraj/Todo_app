@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook]
+         :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
   ## Paperclip
   has_attached_file :avatar, styles: { medium: "300x300", thumb: "100x100" }
@@ -47,6 +47,11 @@ class User < ApplicationRecord
     user
   end
 
+  private
+
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
+  end
   ## Instance Methods
 
 end

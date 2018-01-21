@@ -272,6 +272,7 @@ Devise.setup do |config|
   # The router that invoked `devise_for`, in the example above, would be:
   # config.router_name = :my_engine
   config.omniauth :facebook, "632896913500949", "7e697d84c3619bc46c08c30cd6fefd89", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  config.omniauth :twitter, "ptmkRX5UgWQ6N1tyaWVyuSpbt", "0yr9iJHxl2rOVJJhDvOHoPRW5i7fCIueo3uhiWh01ADw36ShI6"
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
