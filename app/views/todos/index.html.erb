@@ -41,6 +41,11 @@
                         </tbody>
                   </table>
                 <%= link_to 'New Todo', new_todo_path, class: 'btn btn-primary' %>
+                <ul>
+                  <% TwitterApi.our_public_tweets.each do |tweet| %>
+                  <li><%= parsed_tweet tweet %></li>
+                  <% end %>
+                </ul>
               </div>
           </div>
       </div>
